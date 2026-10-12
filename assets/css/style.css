@@ -27,7 +27,7 @@ min-height:38px;flex-wrap:wrap}
 .head{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
 .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
 .logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.logo img.mark{display:block;height:44px;width:auto}
+.logo img.mark{display:block;height:46px;width:auto}
 .logo .txt b{display:block;font-size:16px;letter-spacing:.02em;line-height:1.25}
 .nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
 .nav a{padding:8px 13px;font-size:14px;font-weight:600;color:var(--ink2);border-radius:var(--r)}
