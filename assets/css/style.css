@@ -27,12 +27,8 @@ min-height:38px;flex-wrap:wrap}
 .head{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
 .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
 .logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.logo .mark{width:40px;height:40px;border:2px solid var(--brand);border-radius:2px;
-display:grid;place-items:center;color:var(--brand);font-weight:800;font-size:12px;
-font-family:var(--mono);text-align:center;line-height:1.05}
+.logo img.mark{display:block;height:44px;width:auto}
 .logo .txt b{display:block;font-size:16px;letter-spacing:.02em;line-height:1.25}
-.logo .txt span{display:block;font-size:10px;color:var(--muted);
-letter-spacing:.2em;font-family:var(--mono);text-transform:uppercase}
 .nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
 .nav a{padding:8px 13px;font-size:14px;font-weight:600;color:var(--ink2);border-radius:var(--r)}
 .nav a:hover{color:var(--brand);background:var(--brandlt)}
@@ -176,8 +172,7 @@ min-width:92px}
 .foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:38px;padding-bottom:40px}
 .foot h4{color:#fff;font-size:14px;margin-bottom:16px;letter-spacing:.04em}
 .foot li{padding:5px 0}.foot a:hover{color:#fff}
-.foot .logo .mark{border-color:#7fd3e8;color:#7fd3e8}
-.foot .logo .txt b{color:#fff}.foot .logo .txt span{color:#7f97a8}
+.foot .logo .txt b{color:#fff}
 .foot .desc{margin-top:16px;line-height:1.8;color:#8ea6b6;font-size:13px}
 .foot .bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;display:flex;
 justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px}
