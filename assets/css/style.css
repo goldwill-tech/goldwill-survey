@@ -229,19 +229,58 @@ animation:lbin .22s var(--ease)}
 .lb[hidden]{display:none}
 @keyframes lbin{from{opacity:0}to{opacity:1}}
 .lb figure{margin:0;position:relative;background:#fff;border-radius:16px;overflow:hidden;
-width:100%;max-width:1000px;display:grid;grid-template-columns:1.38fr .62fr;
-box-shadow:0 44px 100px -20px rgba(0,0,0,.7)}
-.lb .shot{background:#fff;display:grid;place-items:center;padding:20px;aspect-ratio:4/3}
-.lb .shot img{width:100%;height:100%;object-fit:contain}
-.lb figcaption{padding:30px 26px 26px;display:flex;flex-direction:column;gap:12px;
-border-left:1px solid var(--line2);position:relative}
+width:100%;max-width:1000px;max-height:min(90vh,900px);display:grid;
+grid-template-columns:1.38fr .62fr;box-shadow:0 44px 100px -20px rgba(0,0,0,.7)}
+/* min-width:0 on both grid items is load-bearing. Without it the intrinsic
+   width of the product photo (600-800 px) plus aspect-ratio:4/3 inflates the
+   first column to ~1330 px whenever the caption column carries a long note
+   block, which pushes the spec panel and the enquiry button outside the
+   viewport where figure{overflow:hidden} clips them. */
+.lb .shot{background:#fff;display:grid;place-items:center;padding:20px;
+aspect-ratio:4/3;min-width:0;min-height:0;overflow:hidden}
+.lb .shot img{width:100%;height:100%;object-fit:contain;max-height:78vh;
+min-width:0}
+.lb figcaption{padding:30px 26px 22px;display:flex;flex-direction:column;
+gap:10px;border-left:1px solid var(--line2);position:relative;
+min-width:0;min-height:0}
 .lb .mdl{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;
 color:var(--brand);background:var(--brandlt);border-radius:var(--r-pill);padding:4px 11px;
 align-self:flex-start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lb h4{font-size:18px;line-height:1.42}
 .lb .br{font-size:12.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.03em}
-.lb .cta{margin-top:auto;display:grid;gap:10px}
+.lb .cta{margin-top:12px;display:grid;gap:10px}
 .lb .cta .btn{width:100%}
+/* manufacturer specifications - the panel scrolls so a long battery note
+   cannot stretch the dialog past the viewport */
+.lb .spec{margin-top:4px;border-top:1px solid var(--line2);padding-top:12px;
+flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
+.lb .spec[hidden]{display:none}
+.lb .spec h5{margin:0 0 8px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.lb .spec h6{margin:12px 0 4px;font-size:12.5px;font-weight:800;color:var(--ink)}
+.lb .spec dl{display:grid;grid-template-columns:auto minmax(0,1fr);
+gap:6px 12px;margin:0;align-items:baseline;min-width:0}
+.lb .spec dt{font-size:11.5px;color:var(--muted);white-space:nowrap;
+overflow:hidden;text-overflow:ellipsis;max-width:11em;min-width:0}
+.lb .spec dd{margin:0;font-size:12.5px;font-weight:650;word-break:break-word;
+font-variant-numeric:tabular-nums;min-width:0}
+.lb .spec .nt{margin-top:13px;border-top:1px dashed var(--line2);padding-top:10px}
+.lb .spec .nt p{margin:4px 0;font-size:12px;color:var(--ink2);line-height:1.55}
+.lb .spec .nt p:first-of-type{margin-top:0}
+.lb .spec .ld{font-size:12px;color:var(--muted)}
+/* With a specification panel the dialog must have a DEFINITE height: otherwise
+   the auto-sized grid row lets .spec grow to its content height, which pushes
+   .cta past the figure's max-height where overflow:hidden clips it (the
+   enquiry button becomes unreachable). Fixing the height bounds the row, so
+   .spec scrolls internally and the button stays put. Cards without a panel
+   keep the compact content-driven height. */
+.lb.has-spec figure{height:min(90vh,900px);grid-template-rows:minmax(0,1fr)}
+.lb.has-spec .shot{aspect-ratio:auto}
+/* extra manufacturer photographs (connector close-ups, case interiors...) */
+.lb .spec .dg{display:grid;gap:9px;margin-top:13px;
+border-top:1px dashed var(--line2);padding-top:11px}
+.lb .spec .dg .di{width:100%;height:auto;border:1px solid var(--line2);
+border-radius:var(--r-sm);background:#fff;display:block}
 .lb .idx{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
 .lb-x{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:50%;
 border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.1);color:#fff;
@@ -337,6 +376,11 @@ align-items:stretch;box-shadow:0 16px 32px rgba(10,26,36,.12)}
 .lb figure{grid-template-columns:1fr;max-width:560px}
 .lb .shot{border-bottom:1px solid var(--line2)}
 .lb figcaption{border-left:0}
+/* stacked layout: the photo row sizes itself, the caption row takes the rest
+   and scrolls, so the panel and the button stay on screen */
+.lb.has-spec figure{grid-template-rows:auto minmax(0,1fr)}
+.lb.has-spec .shot{aspect-ratio:4/3;max-height:34vh}
+.lb.has-spec .shot img{max-height:34vh}
 .lb-pv,.lb-nx{width:40px;height:56px;font-size:20px}
 .bgroup{scroll-margin-top:110px}}
 @media (max-width:520px){
